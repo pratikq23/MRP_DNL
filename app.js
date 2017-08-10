@@ -44,7 +44,7 @@ app.use(
         user: 'root',
         password : 'root',
         port : 3306, //port mysql
-        database:'mobile_recharge'
+        database:'PROJECT_MOB_RECH'
 
     },'pool') //or single
 
