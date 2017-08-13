@@ -20,19 +20,19 @@ exports.loginUser    = function(req,res){
     function (error, results, fields) { 
       if (err) {
         console.log("Error in query : %s ",err );
-        res.send({"statusResponse":statusResponse});
+        res.send({response:{"statusResponse":statusResponse,"message": "failed"}});
       }
       if(results.length > 0) {
         if(results[0].password == password) {
-          res.json({statusResponse:0,message:'login successful'})
-          {response:{"statusResponse":statusResponse,"message": "success"},data:{"userrole":results[0].role_id}}
+          //{statusResponse:0,message:'login successful'})
+          res.json({response:{"statusResponse":0,"message": "success"},data:{"user":results[0]}})
         }
         else {
-          res.json({statusResponse:2,message:'invalid password'})
+          res.json({response:{"statusResponse":2,"message": "invalid password"}})
         }
       }
       else {
-        res.json({statusResponse:1,message:'Invalid Username '})
+        res.json({response:{"statusResponse":1,"message": "invalid username"}})
       }  
     });
   });
