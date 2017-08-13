@@ -40,19 +40,18 @@ app.use(
     
     connection(mysql,{
         
-        host: 'localhost',
-        user: 'root',
-        password : 'root',
+        host: 'mysql5017.smarterasp.net',
+        user: 'a2945c_mrp',
+        password : 'root@123',
         port : 3306, //port mysql
-        database:'PROJECT_MOB_RECH'
-
+        database:'db_a2945c_mrp'
     },'pool') //or single
 
 );
 
 // user api  
 var userObj = require('./routes/user'); 
-app.get('/user', userObj.getUserList);
+app.post('/user', userObj.getUserList);
 app.post('/user/update', userObj.updateUser);
 app.post('/user/add', userObj.save);
 app.post('/user/delete', userObj.deleteUser);
@@ -63,6 +62,16 @@ app.post('/user/getById',userObj.getUserById);
 var loginObj = require('./routes/login');
 app.post('/login',loginObj.loginUser);
 
+//role api's
+var roleObj = require('./routes/role');
+app.get('/getRole',roleObj.getRole);
+
+//company js
+var companyObj = require('./routes/company');
+app.get('/getcompany' ,companyObj.getComapny);
+app.post('/addcompany' ,companyObj.addcompany);
+app.post('/deletecompany' ,companyObj.deleteCompany);
+app.post('/updatecompany' ,companyObj.updatecompany);
 
 
 app.use(app.router);
